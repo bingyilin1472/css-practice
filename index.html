@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>uHost</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <!-- 最不推薦的方式就是inline css or javascript以屬性properties方式置入元素
+         但是其實script、style tags方式也不太推薦，還是以.css、scss、.js方式比較好
+         這樣區隔出html、css、javascript也會比較容易編輯，不過在某些框架因為切成
+         component的關係，他會將同一個元素中的css/js一起編輯，但他也提供最外圈component讓你集體修改
+    -->
+<!--    <style type="text/css">-->
+<!--        /* selector會告訴CSS which element in your DOM */-->
+<!--        section{-->
+<!--            background: #ff1b68;-->
+<!--        }-->
+<!--    </style>-->
+
+    <!-- 以link rel與href css路徑方式引入，撇開framework不談，而且這可以於不同page做reuse
+         這是比較推薦的做法，因為clear separation of your html, css and js
+         (其實框架有時候也會使用一些css lib，那種也多半是link方式(譬如vue配合materialize、bootstrap)
+      -->
+    <!-- link remote font的順序要在css stylesheet之前才能作用   -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/main.css">
+
+</head>
+
+
+<body>
+    <!-- Main tag一般用來表示獨一無二的內容   -->
+    <main>
+        <!-- section一般用來表示段落，常會搭配headline標題
+             article則表示長篇完整的內容/文章
+        -->
+        <section id="hello1">
+            <!-- class的好處就是可以reuse使用  -->
+            <h1 class="section-title">Hello, World!</h1>
+            <p> 1: This is a greeting page for somebody and the World</p>
+        </section>
+        <section id="hello2">
+            <h1 class="section-title">Hello, Dante!!!</h1>
+            <p> 2: This is a greeting page for somebody and the World</p>
+        </section>
+    </main>
+</body>
+
+</html>

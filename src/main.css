@@ -1,0 +1,82 @@
+/*
+    css兩大特性
+        Cascading/kæs'keɪdin/ 層疊特性，可允許multiple rules on the same element
+        Specificity特異性，處理rules之間的衝突，特異性會影響rule的priority
+*/
+
+/* 由兩個元素組成
+    1. selector 什麼要被style
+    2. declaration宣告(就是那些rules) 要如何去style
+*/
+#hello1{
+    background: #ff1b68;
+}
+
+#hello2{
+    background: blue;
+}
+
+/* 這是universal全體的，比起tag選擇更少用，因為很少會全部一樣
+   不過可以用它做基底，在逐漸細分下去，我覺得這是一個可行的做法
+        1. * universal
+        2. tagName
+        3. .className
+        4. #idName
+        5. [attribute]具有某些屬性的element取出
+                ex: [disabled] { ...} 可能可以取得disabled的button
+ */
+* {
+
+}
+
+.section-title{
+    /* text color */
+    color: white;
+    /* 設定serif-font或sans-serif會依據你browser裡面設置的襯字或黑體字是哪個字體
+       譬如某些人的serif-font為Time
+       譬如某些人的sans-serif為Helvetica
+    */
+    /* font-family設定value為monospace、serif-font、sans-serif有好處
+       因為是user browser default比較不會有顯示不出來的問題
+            monospace等寬字: 也叫做比例字，認為有較高的可讀性
+            sans-serif: 黑體字
+            serif: 襯字
+    */
+    /*font-family: serif;*/
+
+    /* 或者採用字體公司的CDN、google font，這種方式也不用把fonts引入到project folder之中   */
+    /*  google font選用後，有download family或Embed嵌入方式  */
+    /* 要先link 引入後才能呼叫下面的內容，來設定 font-family*/
+    font-family: 'Oswald', sans-serif;
+}
+
+/*  這個不會有效果，CSS 樣式其實是有priority
+    in-line styles最高(其次ID selector)，(因為直接注入在element中、採用selector是more specific則越高
+    譬如elementName .className或.className一定大過單純elementName或*(universal)
+    high priority的style rules就會蓋過lower priority style rule
+    (specificity特異度機制，獨特性越高則priority越大)
+ */
+h1{
+    color:black;
+}
+
+/* inheritance/ɪn'herɪt(ə)ns/繼承特性
+     外圈的parent tag的style會給其中的所有tag繼承，叫做inherited style繼承的樣式
+     (但同樣的他的priority並不高，大概只比universal大一點)
+    適用情境:
+        用在像是font-family、font-size很適合，因為一般這個都希望是統一的樣式
+        (所以經常會把它設置在body，這樣基本上所有內容都可以繼承到)
+ */
+body{
+    color: yellow;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* 這個是combinator配合/組合(他也會使selector more specification)
+   可以combine兩個selector，表示在某某之後/之中
+   這個例子是: #hello1中的所有p，他不會去管它在其中的層級關係，只要在他之中就可以選到
+*/
+#hello1 p{
+    font-size: 3em;
+    color: greenyellow;
+}
